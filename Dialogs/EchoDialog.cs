@@ -22,7 +22,12 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
         {
             var message = await argument;
 
-            if (message.Text == "reset")
+            if (message.Text.Trim().ToLower() == "i'm tim" || message.Text.Trim().ToLower() == "i am tim")
+            {
+                await context.PostAsync($"Hello Tim, you are very beautiful girl");
+                context.Wait(MessageReceivedAsync);
+            }
+            else if (message.Text == "reset")
             {
                 PromptDialog.Confirm(
                     context,
